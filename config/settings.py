@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',  # CORS 설정
     'restaurants',
+    'blogs',
 ]
 
 MIDDLEWARE = [
