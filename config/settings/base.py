@@ -15,7 +15,7 @@ import os
 from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # Load environment variables from .env file
 load_dotenv(BASE_DIR / '.env')
@@ -44,10 +44,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'drf_yasg',
     'rest_framework',
+    'rest_framework_simplejwt',
     'corsheaders',  # CORS 설정
     'restaurants',
     'blogs',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -149,6 +152,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Django REST Framework 설정
 REST_FRAMEWORK = {
+    # 기본 인증 클래스 설정: JWT 인증을 기본으로 사용합니다.
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
     # 기본 권한 정책: 모든 뷰에 대해 인증된 사용자만 접근을 허용합니다.
     # 공개 API가 필요할 경우, 해당 뷰에서 @permission_classes([AllowAny])를 사용해 개별적으로 설정할 수 있습니다.
     'DEFAULT_PERMISSION_CLASSES': [
