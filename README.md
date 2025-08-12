@@ -1,35 +1,35 @@
 # OZ_Django_Blog
 
-## Django 프로젝트 PythonAnywhere 배포 가이드
+## Django 프로젝트 PythonAnywhere 배포
 
 ### 1. 최종 목표
 
-로컬 컴퓨터에서 개발한 Django 프로젝트를 PythonAnywhere 클라우드 서버에 배포하여, 누구나 인터넷 주소를 통해 접속할 수 있는 실제 웹 서비스로 만드는 것입니다.
+로컬 컴퓨터에서 개발한 Django 프로젝트를 PythonAnywhere 클라우드 서버에 배포하여, 누구나 인터넷 주소를 통해 접속할 수 있는 실제 웹 서비스로 만드는 것.
 
-### 2. 핵심 배포 절차 (가장 이상적인 순서)
+### 2. 핵심 배포 절차
 
 1.  **코드 준비:**
-    *   Git을 사용하여 최종 개발 코드를 GitHub의 `develop` 브랜치에 업로드합니다.
+    *   Git을 사용하여 최종 개발 코드를 GitHub의 `develop` 브랜치에 업로드
 
 2.  **서버에 코드 복제:**
-    *   PythonAnywhere 서버의 Bash 콘솔에 접속합니다.
-    *   `git clone` 명령어를 사용하여 GitHub 저장소에서 프로젝트 코드를 다운로드합니다.
+    *   PythonAnywhere 서버의 Bash 콘솔에 접속
+    *   `git clone` 명령어를 사용하여 GitHub 저장소에서 프로젝트 코드를 다운로드
 
 3.  **서버 환경 구축:**
-    *   **가상 환경 생성:** `mkvirtualenv` 명령어를 사용하여 프로젝트만을 위한 격리된 Python 가상 환경을 생성합니다.
-    *   **라이브러리 설치:** `requirements.txt` 파일(배포에 필요한 최소한의 라이브러리 목록 포함)을 사용하여 `pip install` 명령어로 필요한 라이브러리를 설치합니다.
+    *   **가상 환경 생성:** `mkvirtualenv` 명령어를 사용하여 프로젝트만을 위한 격리된 Python 가상 환경을 생성
+    *   **라이브러리 설치:** `requirements.txt` 파일(배포에 필요한 최소한의 라이브러리 목록 포함)을 사용하여 `pip install` 명령어로 필요한 라이브러리를 설치
 
 4.  **웹 앱 설정 (PythonAnywhere Web 탭):**
-    *   **경로 설정:** Django 프로젝트의 소스 코드 경로와 생성된 가상 환경 경로를 정확하게 지정합니다.
-    *   **WSGI 파일 수정:** 웹 서버가 Django 애플리케이션을 실행할 수 있도록 WSGI 파일을 수정하여 연결 설정을 완료합니다.
+    *   **경로 설정:** Django 프로젝트의 소스 코드 경로와 생성된 가상 환경 경로를 정확하게 지정
+    *   **WSGI 파일 수정:** 웹 서버가 Django 애플리케이션을 실행할 수 있도록 WSGI 파일을 수정하여 연결 설정을 완료
 
 5.  **데이터베이스 및 기타 설정:**
-    *   **데이터베이스 생성:** `python3 manage.py migrate` 명령어를 실행하여 배포 환경에 맞는 데이터베이스를 생성합니다.
-    *   **정적 파일 수집:** `python3 manage.py collectstatic` 명령어를 실행하여 CSS, JavaScript 등 정적 파일들을 한곳으로 모읍니다.
-    *   **보안 설정:** `ALLOWED_HOSTS` 설정에 실제 접속 도메인 주소를 추가하여 보안을 강화합니다.
+    *   **데이터베이스 생성:** `python3 manage.py migrate` 명령어를 실행하여 배포 환경에 맞는 데이터베이스를 생성
+    *   **정적 파일 수집:** `python3 manage.py collectstatic` 명령어를 실행하여 CSS, JavaScript 등 정적 파일들을 한곳으로 모음
+    *   **보안 설정:** `ALLOWED_HOSTS` 설정에 실제 접속 도메인 주소를 추가하여 보안을 강화
 
 6.  **재시작:**
-    *   PythonAnywhere Web 탭에서 "Reload" 버튼을 클릭하여 모든 변경 사항을 적용하고 웹 서비스를 재시작합니다.
+    *   PythonAnywhere Web 탭에서 "Reload" 버튼을 클릭하여 모든 변경 사항을 적용하고 웹 서비스를 재시작
 
 ---
 
