@@ -1,4 +1,5 @@
 from .base import *
+import dj_database_url
 
 DEBUG = False
 
@@ -13,24 +14,10 @@ ALLOWED_HOSTS = ['YOUR_EC2_IP_OR_DOMAIN']
 # ------------------------------------------------------------------------------
 # DATABASE
 # ------------------------------------------------------------------------------
-# 프로덕션 환경에서는 PostgreSQL과 같은 강력한 데이터베이스 사용을 권장합니다.
-# 아래 설정을 사용하려면 EC2 인스턴스에 PostgreSQL을 설치하고,
-# 데이터베이스 이름(NAME), 사용자(USER), 비밀번호(PASSWORD)를 생성하여
-# .env 파일이나 환경 변수로 관리해야 합니다.
-#
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'production_db',
-#         'USER': 'user',
-#         'PASSWORD': 'password',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
-#
-# **참고**: 위 데이터베이스 설정을 주석 처리하면, base.py에 정의된 SQLite3가 기본으로 사용됩니다.
-# 간단한 배포를 원하시면 이대로 진행하셔도 됩니다.
+# EC2 서버의 .env 파일에 DATABASE_URL을 설정하여 사용합니다.
+DATABASES = {
+    'default': dj_database_url.config(conn_max_age=600)
+}
 # ------------------------------------------------------------------------------
 
 # Add any other production-specific settings here

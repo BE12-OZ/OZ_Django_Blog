@@ -393,6 +393,8 @@ widgetsnbextension==4.0.14
 wsproto==1.2.0
 WTForms==3.2.1
 gunicorn
+psycopg2-binary
+dj-database-url
 
 drf-yasg==1.21.10
 email-validator==1.1.3
