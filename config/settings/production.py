@@ -2,19 +2,35 @@ from .base import *
 
 DEBUG = False
 
-# Add your production domain here
-ALLOWED_HOSTS = ['your-production-domain.com']
+# ------------------------------------------------------------------------------
+# HOSTS
+# ------------------------------------------------------------------------------
+# EC2 인스턴스의 퍼블릭 IP 주소 또는 연결된 도메인을 입력해주세요.
+# 예: ALLOWED_HOSTS = ['13.125.247.205', 'your-domain.com']
+ALLOWED_HOSTS = ['YOUR_EC2_IP_OR_DOMAIN']
 
-# Use a more robust database for production
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'production_db',
-        'USER': 'user',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
+
+# ------------------------------------------------------------------------------
+# DATABASE
+# ------------------------------------------------------------------------------
+# 프로덕션 환경에서는 PostgreSQL과 같은 강력한 데이터베이스 사용을 권장합니다.
+# 아래 설정을 사용하려면 EC2 인스턴스에 PostgreSQL을 설치하고,
+# 데이터베이스 이름(NAME), 사용자(USER), 비밀번호(PASSWORD)를 생성하여
+# .env 파일이나 환경 변수로 관리해야 합니다.
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'production_db',
+#         'USER': 'user',
+#         'PASSWORD': 'password',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+#
+# **참고**: 위 데이터베이스 설정을 주석 처리하면, base.py에 정의된 SQLite3가 기본으로 사용됩니다.
+# 간단한 배포를 원하시면 이대로 진행하셔도 됩니다.
+# ------------------------------------------------------------------------------
 
 # Add any other production-specific settings here
